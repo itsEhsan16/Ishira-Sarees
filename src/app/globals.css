@@ -74,6 +74,14 @@ html.lenis body {
     line-height: 1.2;
     letter-spacing: 0.01em;
   }
+  /* Nav links: UI style +20% (14px → 16.8px) */
+  .t-nav {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16.8px;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
   .t-body-l {
     font-family: var(--font-sans);
     font-weight: 300;
@@ -164,6 +172,15 @@ html.lenis body {
     background-size: 100% 1px;
     background-position: 0% 100%;
   }
+}
+
+/* Brand layer: scrolls with the page without JS; fixed (and animated into the
+   header) once JS is running. */
+.brand-layer {
+  position: absolute;
+}
+html.js-motion .brand-layer {
+  position: fixed;
 }
 
 /* Pre-animation states — only applied once JS has booted, so the page is

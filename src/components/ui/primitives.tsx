@@ -48,41 +48,33 @@ export function HeartIcon({ className = "" }: { className?: string }) {
   );
 }
 
-/* ---------- Logo lockup (Figma component 72:1167) ---------- */
+/* ---------- Logo ---------- */
 
-export function LogoLockup({
-  size = "nav",
-  className = "",
-}: {
-  size?: "nav" | "footer";
-  className?: string;
-}) {
-  // Emblem box sizes from Figma: nav 330×199.5, footer 429×259.4. The emblem
-  // image is cropped inside its box exactly as in the design.
-  const isFooter = size === "footer";
+/** Brand emblem: transparent cut-out of the client logo (1565 × 920). */
+export const EMBLEM = { src: "/images/logo-emblem.png", width: 1565, height: 920 };
+
+export function Emblem({ className = "", priority, sizes }: { className?: string; priority?: boolean; sizes: string }) {
   return (
-    <div className={`flex flex-col items-center ${isFooter ? "gap-[13px]" : "gap-2.5"} ${className}`}>
-      <div
-        data-logo-emblem
-        className={`relative overflow-hidden ${
-          isFooter ? "aspect-[429/259.374] w-[min(429px,70vw)]" : "aspect-[330/199.519] w-[min(330px,62vw)]"
-        }`}
-      >
-        <Image
-          src="/images/logo-emblem.png"
-          alt=""
-          width={4096}
-          height={3058}
-          priority={!isFooter}
-          sizes={isFooter ? "(min-width: 768px) 650px, 105vw" : "(min-width: 768px) 500px, 95vw"}
-          className="absolute left-[-27.48%] top-[-42.91%] h-[185.83%] w-[150.49%] max-w-none"
-        />
+    <Image
+      src={EMBLEM.src}
+      alt=""
+      width={EMBLEM.width}
+      height={EMBLEM.height}
+      priority={priority}
+      sizes={sizes}
+      className={`block h-auto w-full ${className}`}
+    />
+  );
+}
+
+/** Stacked emblem + ISHIRA wordmark (used in the footer). */
+export function LogoLockup({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex flex-col items-center gap-[13px] ${className}`}>
+      <div className="w-[min(429px,70vw)]">
+        <Emblem sizes="(min-width: 768px) 430px, 70vw" />
       </div>
-      <p
-        data-logo-word
-        className={`t-brand whitespace-nowrap ${isFooter ? "text-[clamp(48px,7.58vw,109.2px)]" : "text-[clamp(44px,5.83vw,84px)]"}`}
-        aria-label="Ishira"
-      >
+      <p className="t-brand whitespace-nowrap text-[clamp(48px,7.58vw,109.2px)]" aria-label="Ishira">
         ISHIRA
       </p>
     </div>

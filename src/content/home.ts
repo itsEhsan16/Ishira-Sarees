@@ -132,11 +132,11 @@ export const instagram = {
   label: "(07) Follow @ishira.ae",
   href: "https://instagram.com/ishira.ae",
   tiles: [
-    { src: "/images/ig-1.jpg", tall: false },
-    { src: "/images/story-zari.jpg", tall: true },
-    { src: "/images/ig-2.jpg", tall: false },
-    { src: "/images/product-2.jpg", tall: true },
-    { src: "/images/ig-3.jpg", tall: false },
+    { src: "/images/ig-1.jpg" },
+    { src: "/images/story-zari.jpg" },
+    { src: "/images/ig-2.jpg" },
+    { src: "/images/product-2.jpg" },
+    { src: "/images/ig-3.jpg" },
   ],
   line: "We weave heritage you can wear.",
 };

@@ -27,7 +27,7 @@ export default function TheWeave() {
           </h2>
         </div>
         <div className="flex max-w-[440px] flex-col items-start gap-5">
-          <div className="relative size-[120px]" data-spin-in>
+          <div className="relative size-[120px]">
             <Image src="/images/motif-annam.png" alt="" fill sizes="120px" className="object-contain" />
           </div>
           <p className="t-body-l" data-reveal>
@@ -70,7 +70,7 @@ export default function TheWeave() {
         </article>
       ))}
 
-      <div className="relative size-[140px]" data-spin>
+      <div className="relative size-[140px]">
         <Image src="/images/motif-mango.png" alt="" fill sizes="140px" className="object-contain" />
       </div>
 

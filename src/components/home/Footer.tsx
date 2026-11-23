@@ -33,7 +33,7 @@ export default function Footer() {
       <ZariBorder variant="zari-footer" className="mt-16" />
 
       <div className="flex justify-center overflow-hidden pb-[38px] pt-[38px]" data-footer-logo>
-        <LogoLockup size="footer" />
+        <LogoLockup />
       </div>
 
       <div className="container-x pb-8">
