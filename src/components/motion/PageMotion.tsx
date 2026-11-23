@@ -17,11 +17,10 @@ import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
  *  data-rule          gold/ink rule draws from the left
  *  data-draw          ornament draws out from its centre
  *  data-spin-in       motif rotates/scales in on enter
- *  data-spin          motif rotates continuously with scroll
  *  data-marquee=±1    woven border tiles drift; speed follows scroll velocity
- *  data-float=±1      tiles drift at opposing speeds (Instagram grid)
  *  data-card-img      card image settles from a slight zoom on enter
  *  data-hero-*        page-load timeline (nav, logo, hero frame)
+ *  data-brand-*       large logo glides into the fixed header on scroll
  */
 export default function PageMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
@@ -38,7 +37,64 @@ export default function PageMotion({ children }: { children: ReactNode }) {
         },
         (ctx) => {
           const { motion, desktop } = ctx.conditions as { motion: boolean; desktop: boolean };
-          if (!motion) return;
+
+          /* ---------- Brand: large stacked logo → compact row in the header ---------- */
+          const brandE = q("[data-brand-emblem]")[0];
+          const brandW = q("[data-brand-word]")[0];
+          const headerBg = q("[data-header-bg]")[0];
+          let brandToggle: ScrollTrigger | undefined;
+          if (brandE && brandW) {
+            const HEADER_H = 72;
+            // Untransformed geometry: the layer itself is never transformed, and
+            // offset* values ignore transforms, so this is safe to call any time.
+            const geo = () => {
+              const vw = document.documentElement.clientWidth;
+              const small = vw < 768;
+              const layer = brandE.parentElement!.getBoundingClientRect();
+              const e = { x: layer.left + brandE.offsetLeft, y: layer.top + brandE.offsetTop, w: brandE.offsetWidth, h: brandE.offsetHeight };
+              const w = { x: layer.left + brandW.offsetLeft, y: layer.top + brandW.offsetTop, w: brandW.offsetWidth, h: brandW.offsetHeight };
+              const eS = (small ? 34 : 46) / e.h;
+              const wS = (small ? 20 : 30) / w.h;
+              const gap = small ? 8 : 12;
+              const total = e.w * eS + gap + w.w * wS;
+              const left = (vw - total) / 2;
+              return {
+                e: { x: left - e.x, y: (HEADER_H - e.h * eS) / 2 - e.y, s: eS },
+                // nudge the caps down a touch so they sit on the emblem's optical centre
+                w: { x: left + e.w * eS + gap - w.x, y: (HEADER_H - w.h * wS) / 2 - w.y + 2, s: wS },
+              };
+            };
+            const brand = gsap.timeline({ defaults: { ease: "power2.inOut", duration: 1 }, paused: !motion });
+            // The word slides sideways early and rises a beat later, so it clears
+            // the shrinking emblem instead of passing through it.
+            brand
+              .set([brandE, brandW], { transformOrigin: "0 0" }, 0)
+              .to(brandE, { x: () => geo().e.x, y: () => geo().e.y, scale: () => geo().e.s, ease: "sine.out" }, 0)
+              .to(brandW, { x: () => geo().w.x, ease: "sine.out" }, 0)
+              .to(brandW, { y: () => geo().w.y, scale: () => geo().w.s, ease: "none" }, 0)
+              .to(headerBg, { opacity: 1, ease: "sine.inOut", duration: 0.5 }, 0.5);
+
+            if (motion) {
+              ScrollTrigger.create({
+                animation: brand,
+                start: 0,
+                end: () => Math.min(260, window.innerHeight * 0.34),
+                // longer catch-up gives the glide a soft, trailing settle
+                scrub: 1.2,
+                invalidateOnRefresh: true,
+              });
+            } else {
+              // Reduced motion: no glide — snap between the two states.
+              brandToggle = ScrollTrigger.create({
+                start: 12,
+                end: "max",
+                onToggle: (self) => brand.progress(self.isActive ? 1 : 0),
+                onRefresh: (self) => brand.invalidate().progress(self.isActive ? 1 : 0),
+              });
+            }
+          }
+
+          if (!motion) return () => brandToggle?.kill();
           const dist = desktop ? 48 : 28;
 
           /* ---------- Page load ---------- */
@@ -48,18 +104,15 @@ export default function PageMotion({ children }: { children: ReactNode }) {
           gsap.set(q("[data-hero-nav], [data-hero-frame]"), { visibility: "visible" });
           const intro = gsap.timeline({ paused: true, defaults: { ease: "expo.out", duration: 1.4 } });
           // Hold the intro until the logo emblem has decoded (max 1.2s) so it never animates in empty.
-          const emblem = q("[data-hero-nav] [data-logo-emblem] img")[0] as HTMLImageElement | undefined;
+          const emblem = q("[data-brand-emblem] img")[0] as HTMLImageElement | undefined;
           Promise.race([
             emblem?.decode?.().catch(() => undefined) ?? Promise.resolve(),
             new Promise((r) => setTimeout(r, 1200)),
           ]).then(() => intro.play());
+          const [emblemIn, wordIn] = q("[data-brand-in]");
           intro
-            .from(q("[data-hero-nav] [data-logo-emblem]"), { autoAlpha: 0, scale: 0.9, y: 24, duration: 1.8 }, 0)
-            .from(
-              q("[data-hero-nav] [data-logo-word]"),
-              { clipPath: "inset(0% 0% 100% 0%)", letterSpacing: "0.6em", yPercent: 30, duration: 1.8 },
-              0.15,
-            )
+            .from(emblemIn, { autoAlpha: 0, scale: 0.9, y: 24, duration: 1.8 }, 0)
+            .from(wordIn, { clipPath: "inset(0% 0% 100% 0%)", yPercent: 30, duration: 1.8 }, 0.15)
             .from(q("[data-hero-links]"), { autoAlpha: 0, y: -14, stagger: 0.08, duration: 1 }, 0.35)
             .from(q('[data-hero-tag="left"]'), { autoAlpha: 0, x: -40 }, 0.5)
             .from(q('[data-hero-tag="right"]'), { autoAlpha: 0, x: 40 }, 0.5)
@@ -225,37 +278,12 @@ export default function PageMotion({ children }: { children: ReactNode }) {
             });
           });
 
-          q("[data-spin]").forEach((el) => {
-            gsap.fromTo(
-              el,
-              { rotate: -40 },
-              {
-                rotate: 40,
-                ease: "none",
-                scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
-              },
-            );
-          });
-
           q("[data-diamond]").forEach((el) => {
             gsap.to(el, {
               rotate: 180,
               ease: "none",
               scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
             });
-          });
-
-          q("[data-float]").forEach((el) => {
-            const dir = Number(el.dataset.float) || 1;
-            gsap.fromTo(
-              el,
-              { y: dir * (desktop ? 50 : 24) },
-              {
-                y: -dir * (desktop ? 50 : 24),
-                ease: "none",
-                scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
-              },
-            );
           });
 
           /* ---------- Woven borders drift with scroll velocity ---------- */
