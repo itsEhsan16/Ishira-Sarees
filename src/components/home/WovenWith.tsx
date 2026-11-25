@@ -15,7 +15,7 @@ export default function WovenWith() {
       >
         {materials.map((m, i) => (
           <Fragment key={m}>
-            <li className="font-display text-[clamp(24px,2.5vw,36px)] leading-none tracking-[0.01em] text-plum">{m}</li>
+            <li className="font-display text-[clamp(27px,2.5vw,36px)] leading-none tracking-[0.01em] text-primary">{m}</li>
             {i < materials.length - 1 && (
               <li aria-hidden data-diamond>
                 <DiamondIcon />

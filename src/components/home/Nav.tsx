@@ -81,7 +81,7 @@ export default function Nav() {
       {/* In-flow space the large brand occupies, then the tagline */}
       <div className="container-x pb-2">
         <div aria-hidden className="h-[calc(43px+min(330px,62vw)*920/1565+10px+clamp(44px,5.83vw,84px))]" />
-        <div className="t-label mt-1 flex w-full flex-col items-center gap-2 text-center text-plum md:flex-row md:justify-between md:text-left">
+        <div className="t-label mt-1 flex w-full flex-col items-center gap-2 text-center text-primary md:flex-row md:justify-between md:text-left">
           <p data-hero-tag="left">{nav.taglineLeft}</p>
           <p data-hero-tag="right">{nav.taglineRight}</p>
         </div>
@@ -90,7 +90,7 @@ export default function Nav() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-[60] flex flex-col bg-plum-deep px-5 pb-10 pt-6 text-bg transition-[clip-path] duration-700 ease-(--ease-silk) md:hidden ${
+        className={`fixed inset-0 z-[60] flex flex-col bg-dark px-5 pb-10 pt-6 text-bg transition-[clip-path] duration-700 ease-(--ease-silk) md:hidden ${
           open ? "[clip-path:inset(0_0_0_0)]" : "pointer-events-none [clip-path:inset(0_0_100%_0)]"
         }`}
         inert={!open}

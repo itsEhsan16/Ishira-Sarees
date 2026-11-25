@@ -113,14 +113,14 @@ export function PillButton({
     <Link
       {...props}
       className={`t-ui group relative inline-flex items-center gap-3.5 overflow-hidden rounded-full pl-7 pr-6 ${
-        primary ? "bg-button py-4 text-ivory" : "border border-plum py-[15px] text-oxblood"
+        primary ? "bg-primary py-4 text-ivory" : "border border-primary py-[15px] text-oxblood"
       } ${className}`}
     >
       {/* fill sweep on hover */}
       <span
         aria-hidden
         className={`absolute inset-0 origin-bottom scale-y-0 rounded-full transition-transform duration-700 ease-(--ease-silk) group-hover:scale-y-100 ${
-          primary ? "bg-plum" : "bg-plum/8"
+          primary ? "bg-primary" : "bg-primary/8"
         }`}
       />
       <span className="relative">{children}</span>

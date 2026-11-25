@@ -6,7 +6,7 @@ import ZariBorder from "./ZariBorder";
 /** Figma 77:1784 — Section / Footer */
 export default function Footer() {
   return (
-    <footer className="bg-plum-deep pt-24 text-bg" data-footer>
+    <footer className="bg-dark pt-24 text-bg" data-footer>
       <div className="container-x flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
         <div className="flex flex-col gap-4" data-reveal>
           <p className="t-label text-gold">{footer.label}</p>

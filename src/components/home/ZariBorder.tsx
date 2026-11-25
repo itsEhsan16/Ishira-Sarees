@@ -1,6 +1,6 @@
 /**
  * Repeating woven-border strip. Used for Figma 77:1634 (border-zari),
- * 77:1730 (border-checks, plum tint) and 77:1815 (footer zari).
+ * 77:1730 (border-checks, cocoa tint) and 77:1815 (footer zari).
  * Tile sizes match the Figma background-size; GSAP drifts background-position
  * with scroll velocity via [data-marquee].
  */
@@ -30,7 +30,7 @@ export default function ZariBorder({
         backgroundPosition: "0 0",
       }}
     >
-      {variant === "checks" && <div className="absolute inset-0 bg-plum opacity-85 mix-blend-color" />}
+      {variant === "checks" && <div className="absolute inset-0 bg-primary opacity-85 mix-blend-color" />}
     </div>
   );
 }

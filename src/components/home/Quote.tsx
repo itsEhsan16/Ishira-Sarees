@@ -8,7 +8,7 @@ export default function Quote() {
       <div className="relative h-[72px] w-[min(360px,80vw)]" data-draw>
         <Image src="/images/divider.png" alt="" fill sizes="360px" className="object-cover" />
       </div>
-      <blockquote className="t-heading-italic max-w-[880px] text-center text-aubergine" data-split="lines">
+      <blockquote className="t-heading-italic max-w-[880px] text-center text-dark" data-split="lines">
         {quote.text}
       </blockquote>
       <p className="t-label text-muted" data-reveal>

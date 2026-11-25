@@ -3,13 +3,13 @@ import { weave } from "@/content/home";
 import { ParallaxImage } from "@/components/ui/primitives";
 import ZariBorder from "./ZariBorder";
 
-/** Figma 77:1689 — Section / The Weave (plum chapter story) */
+/** Figma 77:1689 — Section / The Weave (dark chapter story) */
 export default function TheWeave() {
   return (
     <section
       id="the-weave"
       data-weave
-      className="relative flex flex-col items-center gap-[clamp(72px,7.64vw,110px)] bg-plum-deep pt-[clamp(88px,9vw,130px)] text-bg"
+      className="relative flex flex-col items-center gap-[clamp(72px,7.64vw,110px)] bg-dark pt-[clamp(88px,9vw,130px)] text-bg"
       aria-labelledby="weave-title"
     >
       {/* Intro */}

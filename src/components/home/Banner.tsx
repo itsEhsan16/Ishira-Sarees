@@ -16,7 +16,7 @@ export default function Banner() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-[rgba(30,6,7,0)] to-[rgba(30,6,7,0.6)]" />
           <div className="absolute inset-x-6 bottom-8 flex flex-col gap-4 text-bg md:inset-x-14 md:bottom-[9%] md:flex-row md:items-end md:justify-between">
             <p
-              className="font-serif text-[clamp(44px,5vw,72px)] font-light italic leading-[0.95] tracking-[-0.02em]"
+              className="font-serif text-[clamp(44px,5vw,72px)] font-normal italic leading-[0.95] tracking-[-0.015em]"
               data-split="lines"
             >
               {banner.title}

@@ -309,7 +309,7 @@ export default function PageMotion({ children }: { children: ReactNode }) {
           };
           gsap.ticker.add(drift);
 
-          /* ---------- The Weave: plum panel opens out as it arrives ---------- */
+          /* ---------- The Weave: dark panel opens out as it arrives ---------- */
           const weave = q("[data-weave]")[0];
           if (weave) {
             gsap.fromTo(

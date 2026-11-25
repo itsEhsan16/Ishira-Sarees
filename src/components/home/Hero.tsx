@@ -18,15 +18,15 @@ export default function Hero() {
           {/* readability wash on small screens only — the desktop image has a clear left field */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#f6e6cf]/85 via-[#f6e6cf]/40 to-transparent md:hidden" />
           <div className="absolute left-6 right-6 top-14 flex flex-col items-start gap-6 md:left-[5.3%] md:right-auto md:top-[15.8%]" data-hero-copy>
-            <p className="t-label text-plum">{hero.label}</p>
-            <h1 id="hero-title" className="t-display-hero text-aubergine" data-hero-title>
+            <p className="t-label text-primary">{hero.label}</p>
+            <h1 id="hero-title" className="t-display-hero text-dark" data-hero-title>
               {hero.title.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
             </h1>
-            <p className="t-body-l max-w-[330px] text-ink">{hero.body}</p>
+            <p className="t-body-l max-w-[360px] text-ink">{hero.body}</p>
             <PillButton href={hero.cta.href}>{hero.cta.label}</PillButton>
           </div>
         </ParallaxImage>
