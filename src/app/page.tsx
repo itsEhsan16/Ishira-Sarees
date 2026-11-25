@@ -15,7 +15,7 @@ import Instagram from "@/components/home/Instagram";
 import Newsletter from "@/components/home/Newsletter";
 import Footer from "@/components/home/Footer";
 
-/** Figma 77:1611 — Ishira — Home · Plum & Gold */
+/** Figma 77:1611 (layout) · 79:1685 Cocoa & Gold (theme) — Ishira Home */
 export default function Home() {
   return (
     <PageMotion>

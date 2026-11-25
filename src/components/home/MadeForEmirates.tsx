@@ -13,13 +13,13 @@ export default function MadeForEmirates() {
           amount={10}
           className="flex min-h-[620px] items-center justify-center px-4 py-16 md:h-[clamp(560px,43vw,620px)]"
         >
-          <div className="absolute inset-0 bg-plum opacity-75 mix-blend-color" />
+          <div className="absolute inset-0 bg-primary opacity-75 mix-blend-color" />
           <div
             data-card-rise
             className="relative flex max-w-[564px] flex-col items-center gap-[22px] rounded-[20px] bg-bg px-6 py-11 text-center md:p-[52px]"
           >
-            <p className="t-label text-plum">{emirates.label}</p>
-            <h2 id="emirates-title" className="t-heading-l max-w-[460px] text-aubergine">
+            <p className="t-label text-primary">{emirates.label}</p>
+            <h2 id="emirates-title" className="t-heading-l max-w-[460px] text-dark">
               {emirates.title.map((l) => (
                 <span key={l} className="block">
                   {l}

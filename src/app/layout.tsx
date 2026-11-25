@@ -3,16 +3,17 @@ import { Cinzel, Cormorant_Garamond, Italiana, Jost } from "next/font/google";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import "./globals.css";
 
+// Variable fonts: any weight in between is available (e.g. Jost 350 for body).
 const jost = Jost({
   variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: "variable",
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: "variable",
   style: ["normal", "italic"],
 });
 

@@ -1,20 +1,18 @@
 @import "tailwindcss";
 
-/* Design tokens — Figma "Ishira — Home · Plum & Gold" (77:1611) */
+/* Design tokens — Figma "Ishira — Home · Cocoa & Gold" (79:1685) */
 @theme {
   --color-bg: #fffdf8; /* theme/bg */
-  --color-ink: #2e1b2d; /* theme/ink */
-  --color-muted: #8e7c88; /* theme/muted */
-  --color-plum: #4b2e4a;
-  --color-aubergine: #3f263e;
-  --color-plum-deep: #3b132d;
-  --color-button: #3e1c3d;
+  --color-ink: #2e1a10; /* theme/ink */
+  --color-muted: #807167; /* theme/muted #8e7d72, darkened to 4.6:1 on bg for small text */
+  --color-primary: #4b2a1a; /* theme/primary — cocoa: labels, buttons, image tints */
+  --color-dark: #3f2215; /* theme/dark — headings, The Weave + footer panels */
   --color-gold: #b8932a; /* theme/accent */
   --color-ivory: #f3ebdd; /* color/ivory */
   --color-oxblood: #5e0f12;
   --color-sand: #ead9b7;
   --color-card-ink: #1e1414;
-  --color-card-muted: #9a8977;
+  --color-card-muted: #817160; /* color/muted #9a8977, darkened to 4.6:1 on bg */
 
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
@@ -37,7 +35,7 @@
     overflow-x: clip;
   }
   ::selection {
-    background: var(--color-plum);
+    background: var(--color-primary);
     color: var(--color-bg);
   }
 }
@@ -58,20 +56,25 @@ html.lenis body {
 }
 
 @layer components {
-  /* Type styles from the Figma text styles */
+  /* Type styles — based on the Figma text styles, tuned for on-screen
+     readability (Figma used Light weights and 11px labels that read thin). */
+
+  /* Eyebrow labels: 11 → 12px, tracking eased from 0.18em so the letters
+     still group into words */
   .t-label {
     font-family: var(--font-sans);
     font-weight: 500;
-    font-size: 11px;
-    line-height: 1.2;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+  /* Links, prices, buttons: 14 → 15px */
   .t-ui {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 14px;
-    line-height: 1.2;
+    font-size: 15px;
+    line-height: 1.3;
     letter-spacing: 0.01em;
   }
   /* Nav links: UI style +20% (14px → 16.8px) */
@@ -82,59 +85,67 @@ html.lenis body {
     line-height: 1.2;
     letter-spacing: 0.01em;
   }
+  /* Body copy: Jost Light (300) → 350, a touch larger, more line-height */
   .t-body-l {
     font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: clamp(16px, 1.25vw, 18px);
-    line-height: 1.6;
+    font-weight: 350;
+    font-size: clamp(17px, 1.32vw, 19px);
+    line-height: 1.65;
   }
   .t-body-m {
     font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1.6;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 1.65;
   }
+  /* Italiana only ships one (thin) weight, so it is kept large */
   .t-display-xl {
     font-family: var(--font-display);
-    font-size: clamp(52px, 6.11vw, 88px);
+    font-size: clamp(54px, 6.11vw, 88px);
     line-height: 1;
     letter-spacing: 0.01em;
   }
+  /* Cormorant Light (300) has hairline strokes; Regular (400) keeps the
+     elegance but holds up on screen, especially at smaller sizes. */
   .t-display-hero {
     font-family: var(--font-serif);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     font-size: clamp(56px, 6.39vw, 92px);
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
   .t-heading-l {
     font-family: var(--font-serif);
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(40px, 3.89vw, 56px);
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -0.01em;
   }
   .t-heading-italic {
     font-family: var(--font-serif);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     font-size: clamp(32px, 3.2vw, 46px);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-  .t-statement {
-    font-family: var(--font-serif);
-    font-weight: 300;
-    font-size: clamp(28px, 3.06vw, 44px);
-    line-height: 1.22;
+    line-height: 1.18;
     letter-spacing: -0.005em;
   }
-  .t-title-card {
+  /* Long statement paragraphs: Regular weight and a little more leading */
+  .t-statement {
     font-family: var(--font-serif);
     font-weight: 400;
-    font-size: 24px;
-    line-height: 1.2;
+    font-size: clamp(28px, 3.06vw, 44px);
+    line-height: 1.28;
+    letter-spacing: 0;
+  }
+  /* Product names: 24 → 26px, Medium — Cormorant's small x-height needs it */
+  .t-title-card {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    /* 26px at full width; eases to 22px when four cards share a ~1024px screen
+       so names stay on one line beside the price */
+    font-size: clamp(22px, 1.81vw, 26px);
+    line-height: 1.15;
   }
   .t-brand {
     font-family: var(--font-brand);

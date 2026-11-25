@@ -28,7 +28,7 @@ export default function Instagram() {
           </li>
         ))}
       </ul>
-      <p className="t-heading-italic container-x text-center text-aubergine">{instagram.line}</p>
+      <p className="t-heading-italic container-x text-center text-dark">{instagram.line}</p>
     </section>
   );
 }
