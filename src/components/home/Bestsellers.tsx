@@ -52,7 +52,7 @@ export default function Bestsellers() {
   }, []);
 
   return (
-    <section className="container-x flex flex-col items-start gap-7 py-10" aria-labelledby="bestsellers-label">
+    <section className="container-x flex flex-col items-start gap-7 pt-section" aria-labelledby="bestsellers-label">
       <SectionHeader label="(02) Bestsellers" link={{ label: "View Shop", href: "/shop" }} />
       <h2 id="bestsellers-label" className="sr-only">
         Bestsellers

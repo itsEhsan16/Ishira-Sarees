@@ -5,7 +5,7 @@ import { DiamondIcon } from "@/components/ui/primitives";
 /** Figma 77:1636 — Section / Woven With */
 export default function WovenWith() {
   return (
-    <section className="flex flex-col items-center gap-7 py-14" aria-label="Woven with">
+    <section className="flex flex-col items-center gap-7 pt-section-sm" aria-label="Woven with">
       <p className="t-label text-muted" data-reveal>
         Woven with
       </p>

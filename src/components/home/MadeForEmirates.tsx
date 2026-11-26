@@ -4,7 +4,7 @@ import { ParallaxImage, PillButton } from "@/components/ui/primitives";
 /** Figma 77:1739 — Section / Made for the Emirates + Care Row */
 export default function MadeForEmirates() {
   return (
-    <section className="container-x flex flex-col gap-[72px] pb-10 pt-[clamp(72px,6.94vw,100px)]" aria-labelledby="emirates-title">
+    <section className="container-x flex flex-col gap-section-sm pt-section" aria-labelledby="emirates-title">
       <div data-expand className="overflow-hidden rounded-[24px]">
         <ParallaxImage
           src={emirates.image}
@@ -13,7 +13,7 @@ export default function MadeForEmirates() {
           amount={10}
           className="flex min-h-[620px] items-center justify-center px-4 py-16 md:h-[clamp(560px,43vw,620px)]"
         >
-          <div className="absolute inset-0 bg-primary opacity-75 mix-blend-color" />
+          <div className="absolute inset-0 bg-tint-mural opacity-75 mix-blend-color" />
           <div
             data-card-rise
             className="relative flex max-w-[564px] flex-col items-center gap-[22px] rounded-[20px] bg-bg px-6 py-11 text-center md:p-[52px]"

@@ -4,7 +4,7 @@ import { ParallaxImage } from "@/components/ui/primitives";
 /** Figma 77:1734 — Section / Banner */
 export default function Banner() {
   return (
-    <section className="container-x" aria-label={banner.title}>
+    <section className="container-x pt-section" aria-label={banner.title}>
       <div data-expand className="overflow-hidden rounded-[24px]">
         <ParallaxImage
           src={banner.image}

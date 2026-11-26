@@ -15,7 +15,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="container-x pb-[clamp(72px,6.94vw,100px)]" aria-labelledby="newsletter-title">
+    <section className="container-x py-section" aria-labelledby="newsletter-title">
       <div data-expand className="overflow-hidden rounded-[24px]">
         <ParallaxImage
           src={newsletter.image}
@@ -24,7 +24,7 @@ export default function Newsletter() {
           amount={10}
           className="flex min-h-[560px] items-center justify-center px-6 py-20 md:h-[clamp(520px,41.7vw,600px)]"
         >
-          <div className="absolute inset-0 bg-dark opacity-85 mix-blend-color" />
+          <div className="absolute inset-0 bg-tint-newsletter opacity-85 mix-blend-color" />
           <div className="relative flex flex-col items-center gap-6 text-center text-bg" data-stagger>
             <p className="t-label text-gold">{newsletter.label}</p>
             <h2 id="newsletter-title" className="font-display text-[clamp(44px,5.28vw,76px)] leading-none tracking-[0.01em]">

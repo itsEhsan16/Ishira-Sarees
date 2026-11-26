@@ -1,18 +1,36 @@
 @import "tailwindcss";
 
-/* Design tokens — Figma "Ishira — Home · Cocoa & Gold" (79:1685) */
+/* Design tokens.
+   Six single-colour themes share one structure (modelled on the Figma
+   "Cocoa & Gold" theme, 79:1685):
+     dark    = the theme colour — headings, The Weave + footer panels, newsletter tint
+     primary = dark, slightly lighter — labels, buttons, outlines, mural + border tints
+     ink     = dark, deeper — body text (all ≥ 15:1 on bg)
+     muted   = greyed theme hue at 4.6:1 on bg
+   Default is Forest. Others: html[data-theme="…"], picked via ?theme=… or the
+   switcher (see layout.tsx / ThemeSwitcher.tsx). */
 @theme {
   --color-bg: #fffdf8; /* theme/bg */
-  --color-ink: #2e1a10; /* theme/ink */
-  --color-muted: #807167; /* theme/muted #8e7d72, darkened to 4.6:1 on bg for small text */
-  --color-primary: #4b2a1a; /* theme/primary — cocoa: labels, buttons, image tints */
-  --color-dark: #3f2215; /* theme/dark — headings, The Weave + footer panels */
+
+  /* Forest #093624 */
+  --color-ink: #062217;
+  --color-muted: #5c7a6e;
+  --color-primary: #0c452e;
+  --color-dark: #093624;
+
+  /* derived roles — every theme maps them the same way */
+  --color-panel: var(--color-dark); /* The Weave */
+  --color-footer: var(--color-dark); /* footer, mobile menu */
+  --color-tint-mural: var(--color-primary); /* Made for the Emirates */
+  --color-tint-newsletter: var(--color-dark); /* newsletter */
+  --color-tint-border: var(--color-primary); /* checked border strip */
+  --color-card-ink: var(--color-ink);
+  --color-card-muted: var(--color-muted);
+
   --color-gold: #b8932a; /* theme/accent */
   --color-ivory: #f3ebdd; /* color/ivory */
   --color-oxblood: #5e0f12;
   --color-sand: #ead9b7;
-  --color-card-ink: #1e1414;
-  --color-card-muted: #817160; /* color/muted #9a8977, darkened to 4.6:1 on bg */
 
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
@@ -20,6 +38,45 @@
   --font-brand: var(--font-cinzel), ui-serif, Georgia, serif;
 
   --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Spacing scale — every section adds space only ABOVE itself, so gaps never
+     double up. Use as pt-section, mt-section-sm, gap-section, etc. */
+  --spacing-section: clamp(64px, 6.67vw, 96px); /* between sections */
+  --spacing-section-sm: clamp(40px, 4.44vw, 64px); /* closely related blocks */
+}
+
+html[data-theme="wine"] {
+  --color-ink: #381925;
+  --color-muted: #8d6a77;
+  --color-primary: #542537;
+  --color-dark: #48202f;
+}
+html[data-theme="teal"] {
+  --color-ink: #001b1e;
+  --color-muted: #5d787c;
+  --color-primary: #003f47;
+  --color-dark: #002f35;
+}
+html[data-theme="aubergine"] {
+  --color-ink: #160c19;
+  --color-muted: #856b8d;
+  --color-primary: #2f1935;
+  --color-dark: #241329;
+}
+html[data-theme="indigo"] {
+  --color-ink: #1b193f;
+  --color-muted: #717093;
+  --color-primary: #27255c;
+  --color-dark: #22204f;
+}
+/* Figma "Cocoa & Gold" (79:1685), with the readability tweaks */
+html[data-theme="cocoa"] {
+  --color-ink: #2e1a10;
+  --color-muted: #807167;
+  --color-primary: #4b2a1a;
+  --color-dark: #3f2215;
+  --color-card-ink: #1e1414;
+  --color-card-muted: #817160;
 }
 
 @layer base {
