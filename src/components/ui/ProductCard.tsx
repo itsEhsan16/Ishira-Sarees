@@ -4,7 +4,12 @@ import type { Product } from "@/content/home";
 import { formatAED } from "@/lib/format";
 import { HeartIcon } from "@/components/ui/primitives";
 
-/** Figma component ProductCard (instance 77:1660) — 328 × 470, image 328 × 404 */
+const SIZES = "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw";
+
+/**
+ * Figma component ProductCard (instance 77:1660) — 328 × 470, image 328 × 404.
+ * Shows the folded saree; on hover it cross-fades to the draped photo.
+ */
 export default function ProductCard({ product, priority }: { product: Product; priority?: boolean }) {
   const href = `/products/${product.slug}`;
   return (
@@ -17,18 +22,29 @@ export default function ProductCard({ product, priority }: { product: Product; p
               alt=""
               fill
               priority={priority}
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
+              sizes={SIZES}
+              style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined}
               className="object-cover transition-transform duration-[1.4s] ease-(--ease-silk) group-hover:scale-[1.06]"
             />
+            {product.hoverImage && (
+              <Image
+                src={product.hoverImage}
+                alt=""
+                fill
+                sizes={SIZES}
+                className="object-cover object-[50%_35%] opacity-0 transition-opacity duration-700 ease-(--ease-silk) group-hover:opacity-100"
+              />
+            )}
           </div>
         </Link>
         <span className="t-label pointer-events-none absolute left-4 top-4 rounded-full bg-ivory px-2.5 py-1.5 text-oxblood">
           {product.tag}
         </span>
+        {/* ivory chip keeps the heart visible on dark photos */}
         <button
           type="button"
           aria-label={`Save ${product.name} to wishlist`}
-          className="absolute right-4 top-4 transition-transform duration-500 ease-(--ease-silk) hover:scale-115"
+          className="absolute right-3 top-3 grid size-8 place-items-center rounded-full bg-ivory/90 transition-transform duration-500 ease-(--ease-silk) hover:scale-110"
         >
           <HeartIcon />
         </button>

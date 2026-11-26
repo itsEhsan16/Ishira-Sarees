@@ -33,14 +33,28 @@ export type Product = {
   detail: string;
   priceAed: number;
   tag: string;
+  /** Main photo (folded flat-lay) */
   image: string;
+  /** Shown on hover (draped on the mannequin) */
+  hoverImage?: string;
+  /** object-position for the main photo when it is cropped into the card */
+  imagePosition?: string;
 };
 
+// Product photos live in /public/sareess (client shoot, 2 per saree).
+// TODO(client): detail lines and AED prices are placeholders until the
+// client sends the real descriptions and prices.
+const saree = (file: string) => `/sareess/${encodeURIComponent(file)}`;
+
 export const bestsellers: Product[] = [
-  { slug: "mayil-kattam", name: "Mayil Kattam", detail: "Oxblood · Peacock zari", priceAed: 4850, tag: "Bestseller", image: "/images/product-1.jpg" },
-  { slug: "annam-korvai", name: "Annam Korvai", detail: "Peacock green · Rani korvai", priceAed: 5600, tag: "Handloom", image: "/images/product-2.jpg" },
-  { slug: "manga-butta", name: "Manga Butta", detail: "Mustard · Maroon border", priceAed: 3950, tag: "New Weave", image: "/images/product-3.jpg" },
-  { slug: "yaanai-rekku", name: "Yaanai Rekku", detail: "Dusty rose · Silver-gold zari", priceAed: 4400, tag: "Handloom", image: "/images/product-4.jpg" },
+  { slug: "mayuri", name: "Mayuri", detail: "Peacock green · Purple zari border", priceAed: 4850, tag: "Bestseller", image: saree("Mayuri1.jpeg"), hoverImage: saree("Mayuri2.jpeg") },
+  { slug: "indraneela", name: "Indraneela", detail: "Lavender · Indigo border", priceAed: 5600, tag: "Handloom", image: saree("Indraneela1.jpeg"), hoverImage: saree("Indraneela2.jpeg") },
+  { slug: "kanakavalli", name: "Kanakavalli", detail: "Mustard · Navy zari border", priceAed: 4400, tag: "New Weave", image: saree("Kanakavalli1.jpeg"), hoverImage: saree("Kanakavalli2.jpeg"), imagePosition: "62% 50%" },
+  { slug: "paavala-megam", name: "Paavala Megam", detail: "Coral · Blue zari border", priceAed: 5200, tag: "Handloom", image: saree("Paavala Megam1.jpeg"), hoverImage: saree("Paavala Megam2.jpeg") },
+  { slug: "rudra-aazhi", name: "Rudra Aazhi", detail: "Teal · Red zari border", priceAed: 4950, tag: "Handloom", image: saree("Rudra Aazhi1.jpeg"), hoverImage: saree("Rudra Aazhi2.jpeg") },
+  { slug: "shyama", name: "Shyama", detail: "Black · Purple zari border", priceAed: 4650, tag: "New Weave", image: saree("Shyama1.jpeg"), hoverImage: saree("Shyama2.jpeg") },
+  { slug: "kanakambari", name: "Kanakambari", detail: "Rust orange · Black zari border", priceAed: 3950, tag: "Handloom", image: saree("Kanakambari1.jpeg"), hoverImage: saree("Kanakambari2.jpeg") },
+  { slug: "chandhana", name: "Chandhana", detail: "Sandalwood · Checked brown border", priceAed: 5400, tag: "Bestseller", image: saree("Chandhana1.jpeg"), hoverImage: saree("Chandhana2.jpeg") },
 ];
 
 export const intro = {
