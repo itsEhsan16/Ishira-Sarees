@@ -4,7 +4,7 @@ import { instagram } from "@/content/home";
 /** Figma 77:1764 — Section / Instagram. Equal square posts, no scroll motion; a post grows on hover. */
 export default function Instagram() {
   return (
-    <section className="flex flex-col items-center gap-9 py-[clamp(72px,6.94vw,100px)]" aria-label="Instagram">
+    <section className="flex flex-col items-center gap-9 pt-section" aria-label="Instagram">
       <a href={instagram.href} className="t-label link-u text-ink" target="_blank" rel="noreferrer">
         {instagram.label}
       </a>

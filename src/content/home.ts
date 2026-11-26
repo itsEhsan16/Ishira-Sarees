@@ -84,8 +84,6 @@ export const weave = {
       body: "Pure mulberry silk, twisted into three-ply yarn and dyed in small batches. The heavier thread gives a Kanjivaram its weight, its drape and the depth of its colour.",
       meta: "Mulberry silk · 3-ply yarn",
       image: "/images/story-silk.jpg",
-      size: { w: 560, h: 720 },
-      imageFirst: true,
     },
     {
       numeral: "[ II ]",
@@ -93,8 +91,6 @@ export const weave = {
       body: "Silk thread wrapped in fine silver, then gilded with gold. Real zari ages gracefully and keeps its quiet glow — the clearest mark of an authentic Kanjivaram.",
       meta: "Silver core · Gold gilt",
       image: "/images/story-zari.jpg",
-      size: { w: 600, h: 600 },
-      imageFirst: false,
     },
     {
       numeral: "[ III ]",
@@ -102,8 +98,6 @@ export const weave = {
       body: "Body and border are woven separately and interlocked by hand, three shuttles at a time. The join is so strong that the border will never come loose.",
       meta: "Three-shuttle interlock",
       image: "/images/story-korvai.jpg",
-      size: { w: 560, h: 720 },
-      imageFirst: true,
     },
     {
       numeral: "[ IV ]",
@@ -111,8 +105,6 @@ export const weave = {
       body: "On a wooden pit loom, a master weaver and an assistant work together for two to four weeks. Every motif — peacock, swan, mango, checks — is counted by hand, never printed.",
       meta: "14–28 days on the loom",
       image: "/images/story-loom.jpg",
-      size: { w: 760, h: 520 },
-      imageFirst: false,
     },
   ],
 };

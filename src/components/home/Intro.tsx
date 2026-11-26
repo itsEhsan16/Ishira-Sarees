@@ -4,7 +4,7 @@ import { intro } from "@/content/home";
 /** Figma 77:1671 — Section / Intro. Words fill from muted to ink on scroll. */
 export default function Intro() {
   return (
-    <section className="container-x flex flex-col items-start gap-7 py-[clamp(72px,7.64vw,110px)]" aria-label="Welcome">
+    <section className="container-x flex flex-col items-start gap-7 pt-section" aria-label="Welcome">
       <div className="relative size-[88px]" data-spin-in>
         <Image src="/images/motif-peacock.png" alt="" fill sizes="88px" className="object-contain" />
       </div>

@@ -30,7 +30,7 @@ export default function ZariBorder({
         backgroundPosition: "0 0",
       }}
     >
-      {variant === "checks" && <div className="absolute inset-0 bg-primary opacity-85 mix-blend-color" />}
+      {variant === "checks" && <div className="absolute inset-0 bg-tint-border opacity-85 mix-blend-color" />}
     </div>
   );
 }

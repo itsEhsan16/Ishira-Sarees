@@ -60,19 +60,19 @@ export default function Nav() {
       </header>
 
       {/* Brand layer — fixed once JS runs, absolute (scrolls away) without it */}
-      <div className="brand-layer pointer-events-none inset-x-0 top-[43px] z-50 flex flex-col items-center gap-2.5" data-hero-nav>
+      <div className="brand-layer pointer-events-none inset-x-0 top-[43px] z-50 flex flex-col items-center gap-[7px]" data-hero-nav>
         <Link
           href="/"
           aria-label="Ishira — home"
-          className="pointer-events-auto block w-[min(330px,62vw)] origin-top-left will-change-transform"
+          className="pointer-events-auto block w-[min(231px,44vw)] origin-top-left will-change-transform"
           data-brand-emblem
         >
           <div data-brand-in>
-            <Emblem priority sizes="(min-width: 768px) 330px, 62vw" />
+            <Emblem priority sizes="(min-width: 768px) 231px, 44vw" />
           </div>
         </Link>
         <Link href="/" tabIndex={-1} aria-hidden className="pointer-events-auto block origin-top-left will-change-transform" data-brand-word>
-          <p className="t-brand whitespace-nowrap text-[clamp(44px,5.83vw,84px)]" data-brand-in>
+          <p className="t-brand whitespace-nowrap text-[clamp(31px,4.08vw,58.8px)]" data-brand-in>
             ISHIRA
           </p>
         </Link>
@@ -80,7 +80,7 @@ export default function Nav() {
 
       {/* In-flow space the large brand occupies, then the tagline */}
       <div className="container-x pb-2">
-        <div aria-hidden className="h-[calc(43px+min(330px,62vw)*920/1565+10px+clamp(44px,5.83vw,84px))]" />
+        <div aria-hidden className="h-[calc(43px+min(231px,44vw)*920/1565+7px+clamp(31px,4.08vw,58.8px))]" />
         <div className="t-label mt-1 flex w-full flex-col items-center gap-2 text-center text-primary md:flex-row md:justify-between md:text-left">
           <p data-hero-tag="left">{nav.taglineLeft}</p>
           <p data-hero-tag="right">{nav.taglineRight}</p>
@@ -90,7 +90,7 @@ export default function Nav() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-[60] flex flex-col bg-dark px-5 pb-10 pt-6 text-bg transition-[clip-path] duration-700 ease-(--ease-silk) md:hidden ${
+        className={`fixed inset-0 z-[60] flex flex-col bg-footer px-5 pb-10 pt-6 text-bg transition-[clip-path] duration-700 ease-(--ease-silk) md:hidden ${
           open ? "[clip-path:inset(0_0_0_0)]" : "pointer-events-none [clip-path:inset(0_0_100%_0)]"
         }`}
         inert={!open}

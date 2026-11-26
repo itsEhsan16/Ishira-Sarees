@@ -22,7 +22,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <div className="pt-16">
+        <div className="pt-section">
           <ZariBorder variant="zari" />
         </div>
         <WovenWith />
