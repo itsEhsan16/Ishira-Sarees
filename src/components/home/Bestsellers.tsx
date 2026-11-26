@@ -22,12 +22,34 @@ export default function Bestsellers() {
     return () => window.removeEventListener("resize", update);
   }, [update]);
 
+  // Where the last click is heading, so quick repeated clicks add up instead
+  // of restarting from the mid-animation position.
+  const target = useRef<number | null>(null);
+
   const step = (dir: 1 | -1) => {
     const el = track.current;
     const card = el?.firstElementChild as HTMLElement | null;
     if (!el || !card) return;
-    el.scrollBy({ left: dir * (card.offsetWidth + 16), behavior: "smooth" });
+    const stride = card.offsetWidth + 16;
+    const max = el.scrollWidth - el.clientWidth;
+    const from = target.current ?? el.scrollLeft;
+    const next = Math.max(0, Math.min(max, Math.round(from / stride + dir) * stride));
+    target.current = next;
+    el.scrollTo({ left: next, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    const done = () => (target.current = null);
+    el.addEventListener("scrollend", done);
+    // a touch/trackpad drag takes over from any pending arrow target
+    el.addEventListener("pointerdown", done);
+    return () => {
+      el.removeEventListener("scrollend", done);
+      el.removeEventListener("pointerdown", done);
+    };
+  }, []);
 
   return (
     <section className="container-x flex flex-col items-start gap-7 py-10" aria-labelledby="bestsellers-label">
