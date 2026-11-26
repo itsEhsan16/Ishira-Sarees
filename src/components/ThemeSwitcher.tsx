@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 /**
- * Temporary palette picker for comparing themes. Shows in development, or on
- * any build once a ?theme=… link has been opened in this browser.
- * Remove (with the boot script in layout.tsx) once the client picks a theme.
+ * Temporary palette picker for comparing themes — shown to every visitor,
+ * including on the deployed site, while the client chooses.
+ * Remove (with the boot script in layout.tsx) once a theme is picked.
  */
 const THEMES = [
   { id: "forest", label: "Forest", swatch: "#093624" },
@@ -19,16 +19,11 @@ const THEMES = [
 type ThemeId = (typeof THEMES)[number]["id"];
 
 export default function ThemeSwitcher() {
-  const [visible, setVisible] = useState(false);
   const [active, setActive] = useState<ThemeId>("forest");
 
+  // The boot script may already have applied a saved theme before hydration.
   useEffect(() => {
-    let stored: string | null = null;
-    try {
-      stored = localStorage.getItem("ishira-theme");
-    } catch {}
     // eslint-disable-next-line react-hooks/set-state-in-effect -- read client-only state after mount
-    setVisible(process.env.NODE_ENV === "development" || stored !== null);
     setActive((document.documentElement.dataset.theme as ThemeId | undefined) ?? "forest");
   }, []);
 
@@ -40,8 +35,6 @@ export default function ThemeSwitcher() {
     } catch {}
     setActive(id);
   };
-
-  if (!visible) return null;
 
   return (
     <div
