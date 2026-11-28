@@ -11,7 +11,7 @@ export default function Banner() {
           alt="Close-up of gold zari peacocks woven into a deep red silk border"
           sizes="(min-width: 1440px) 1360px, 100vw"
           amount={12}
-          className="aspect-[4/5] sm:aspect-[1360/640]"
+          className="aspect-[4/4.2] sm:aspect-[1360/460]"
         >
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-[rgba(30,6,7,0)] to-[rgba(30,6,7,0.6)]" />
           <div className="absolute inset-x-6 bottom-8 flex flex-col gap-4 text-bg md:inset-x-14 md:bottom-[9%] md:flex-row md:items-end md:justify-between">

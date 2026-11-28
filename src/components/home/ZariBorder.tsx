@@ -1,6 +1,6 @@
 /**
  * Repeating woven-border strip. Used for Figma 77:1634 (border-zari),
- * 77:1730 (border-checks, cocoa tint) and 77:1815 (footer zari).
+ * 77:1730 (border-checks, theme tint) and 77:1815 (footer zari).
  * Tile sizes match the Figma background-size; GSAP drifts background-position
  * with scroll velocity via [data-marquee].
  */

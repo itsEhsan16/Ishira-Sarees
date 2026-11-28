@@ -4,7 +4,7 @@ import { quote } from "@/content/home";
 /** Figma 77:1685 — Section / Quote */
 export default function Quote() {
   return (
-    <section className="container-x flex flex-col items-center gap-7 pt-section">
+    <section className="container-x flex flex-col items-center gap-6 pt-section">
       <div className="relative h-[72px] w-[min(360px,80vw)]" data-draw>
         <Image src="/images/divider.png" alt="" fill sizes="360px" className="object-cover" />
       </div>

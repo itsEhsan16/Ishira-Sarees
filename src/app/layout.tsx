@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cinzel, Cormorant_Garamond, Italiana, Jost } from "next/font/google";
 import SmoothScroll from "@/components/motion/SmoothScroll";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 import "./globals.css";
 
 // Variable fonts: any weight in between is available (e.g. Jost 350 for body).
@@ -40,16 +39,9 @@ export const viewport: Viewport = {
   themeColor: "#fffdf8",
 };
 
-/* Runs before first paint:
-   - adds .js-motion so CSS can hide elements GSAP will reveal
-   - theme preview: ?theme=wine (forest | wine | teal | aubergine | indigo | cocoa)
-     sets html[data-theme] and remembers the choice in this browser.
-     Remove, with ThemeSwitcher, once the client has picked a palette. */
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js-motion');
-try{var ok={forest:1,wine:1,teal:1,aubergine:1,indigo:1,cocoa:1};
-var q=new URLSearchParams(location.search).get('theme');
-if(q&&ok[q]){localStorage.setItem('ishira-theme',q)}
-var t=localStorage.getItem('ishira-theme');if(t&&ok[t]&&t!=='forest'){d.setAttribute('data-theme',t)}}catch(e){}})()`;
+/* Adds .js-motion before first paint so CSS can hide elements GSAP will reveal.
+   Also clears the old theme-preview choice saved by the removed switcher. */
+const bootScript = `document.documentElement.classList.add('js-motion');try{localStorage.removeItem('ishira-theme')}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -63,7 +55,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
-        <ThemeSwitcher />
       </body>
     </html>
   );
