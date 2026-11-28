@@ -70,11 +70,11 @@ export function Emblem({ className = "", priority, sizes }: { className?: string
 /** Stacked emblem + ISHIRA wordmark (used in the footer). */
 export function LogoLockup({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex flex-col items-center gap-[13px] ${className}`}>
-      <div className="w-[min(429px,70vw)]">
-        <Emblem sizes="(min-width: 768px) 430px, 70vw" />
+    <div className={`flex flex-col items-center gap-2 ${className}`}>
+      <div className="w-[min(215px,50vw)]">
+        <Emblem sizes="(min-width: 768px) 215px, 50vw" />
       </div>
-      <p className="t-brand whitespace-nowrap text-[clamp(48px,7.58vw,109.2px)]" aria-label="Ishira">
+      <p className="t-brand whitespace-nowrap text-[clamp(32px,3.8vw,55px)]" aria-label="Ishira">
         ISHIRA
       </p>
     </div>

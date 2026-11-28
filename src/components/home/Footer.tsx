@@ -32,7 +32,7 @@ export default function Footer() {
 
       <ZariBorder variant="zari-footer" className="mt-section-sm" />
 
-      <div className="flex justify-center overflow-hidden pb-[38px] pt-[38px]" data-footer-logo>
+      <div className="flex justify-center overflow-hidden py-8" data-footer-logo>
         <LogoLockup />
       </div>
 

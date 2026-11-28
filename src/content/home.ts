@@ -109,11 +109,6 @@ export const weave = {
   ],
 };
 
-export const heritageLine = {
-  lead: "From the looms of Kanchipuram to homes across the Emirates, ",
-  rest: "Ishira brings the Kanjivaram as it was meant to be — hand-woven, certified pure, and made to be passed down.",
-};
-
 export const banner = {
   title: "Heritage you can hold.",
   label: "(05) The zari, up close",

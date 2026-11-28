@@ -8,14 +8,13 @@ import Intro from "@/components/home/Intro";
 import Collections from "@/components/home/Collections";
 import Quote from "@/components/home/Quote";
 import TheWeave from "@/components/home/TheWeave";
-import HeritageLine from "@/components/home/HeritageLine";
 import Banner from "@/components/home/Banner";
 import MadeForEmirates from "@/components/home/MadeForEmirates";
 import Instagram from "@/components/home/Instagram";
 import Newsletter from "@/components/home/Newsletter";
 import Footer from "@/components/home/Footer";
 
-/** Figma 77:1611 (layout) · 79:1685 Cocoa & Gold (theme) — Ishira Home */
+/** Figma 77:1611 (layout), Aubergine theme — Ishira Home */
 export default function Home() {
   return (
     <PageMotion>
@@ -31,7 +30,6 @@ export default function Home() {
         <Collections />
         <Quote />
         <TheWeave />
-        <HeritageLine />
         <Banner />
         <MadeForEmirates />
         <Instagram />

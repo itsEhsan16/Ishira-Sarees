@@ -22,7 +22,7 @@ export default function Newsletter() {
           alt=""
           sizes="(min-width: 1440px) 1360px, 100vw"
           amount={10}
-          className="flex min-h-[560px] items-center justify-center px-6 py-20 md:h-[clamp(520px,41.7vw,600px)]"
+          className="flex min-h-[460px] items-center justify-center px-6 py-14 md:h-[clamp(400px,31vw,440px)]"
         >
           <div className="absolute inset-0 bg-tint-newsletter opacity-85 mix-blend-color" />
           <div className="relative flex flex-col items-center gap-6 text-center text-bg" data-stagger>

@@ -12,12 +12,12 @@ export default function Hero() {
           sizes="(min-width: 1440px) 1360px, 100vw"
           priority
           amount={10}
-          className="h-[min(760px,88svh)] min-h-[620px] md:h-[clamp(560px,52.8vw,760px)]"
+          className="h-[min(680px,82svh)] min-h-[560px] md:h-[clamp(500px,44vw,640px)]"
           imgClassName="object-[70%_50%] md:object-center"
         >
           {/* readability wash on small screens only — the desktop image has a clear left field */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#f6e6cf]/85 via-[#f6e6cf]/40 to-transparent md:hidden" />
-          <div className="absolute left-6 right-6 top-14 flex flex-col items-start gap-6 md:left-[5.3%] md:right-auto md:top-[15.8%]" data-hero-copy>
+          <div className="absolute left-6 right-6 top-14 flex flex-col items-start gap-6 md:left-[5.3%] md:right-auto md:top-[12%]" data-hero-copy>
             <p className="t-label text-primary">{hero.label}</p>
             <h1 id="hero-title" className="t-display-hero text-dark" data-hero-title>
               {hero.title.map((line) => (

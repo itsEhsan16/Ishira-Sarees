@@ -11,12 +11,12 @@ export default function MadeForEmirates() {
           alt=""
           sizes="(min-width: 1440px) 1360px, 100vw"
           amount={10}
-          className="flex min-h-[620px] items-center justify-center px-4 py-16 md:h-[clamp(560px,43vw,620px)]"
+          className="flex min-h-[520px] items-center justify-center px-4 py-12 md:h-[clamp(460px,36vw,520px)]"
         >
           <div className="absolute inset-0 bg-tint-mural opacity-75 mix-blend-color" />
           <div
             data-card-rise
-            className="relative flex max-w-[564px] flex-col items-center gap-[22px] rounded-[20px] bg-bg px-6 py-11 text-center md:p-[52px]"
+            className="relative flex max-w-[564px] flex-col items-center gap-[18px] rounded-[20px] bg-bg px-6 py-9 text-center md:p-10"
           >
             <p className="t-label text-primary">{emirates.label}</p>
             <h2 id="emirates-title" className="t-heading-l max-w-[460px] text-dark">
